@@ -1,0 +1,251 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Toolbar Styles */
+.toolbar {
+    display: flex;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: #217346;
+    color: white;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 20px;
+}
+
+.formula-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.cell-reference {
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 3px;
+    margin-right: 5px;
+    font-weight: bold;
+    color: #333;
+}
+
+#formula-input {
+    flex-grow: 1;
+    border: none;
+    padding: 5px;
+    outline: none;
+    font-size: 1rem;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    margin-left: 15px;
+}
+
+.actions button {
+    background-color: #185a36;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.actions button:hover {
+    background-color: #0f4025;
+}
+
+/* Sheet Tabs */
+.sheet-tabs {
+    display: flex;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+    padding: 0 15px;
+}
+
+.sheet-tab {
+    padding: 8px 15px;
+    cursor: pointer;
+    border-right: 1px solid #ddd;
+    background-color: #e0e0e0;
+}
+
+.sheet-tab.active {
+    background-color: white;
+    border-bottom: 2px solid #217346;
+    font-weight: bold;
+}
+
+/* Spreadsheet Container */
+.spreadsheet-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    overflow: auto;
+}
+
+.column-headers {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+.corner-cell {
+    width: 40px;
+    height: 25px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    border-top: none;
+    border-left: none;
+}
+
+.column-header {
+    width: 100px;
+    min-width: 100px;
+    height: 25px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.spreadsheet-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.row-headers {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    left: 0;
+    z-index: 1;
+}
+
+.row-header {
+    width: 40px;
+    height: 25px;
+    background-color: #e0e0e0;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.grid-container {
+    flex-grow: 1;
+}
+
+.row {
+    display: flex;
+}
+
+.cell {
+    width: 100px;
+    min-width: 100px;
+    height: 25px;
+    border: 1px solid #ddd;
+    padding: 2px 4px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.cell.selected {
+    border: 2px solid #217346;
+    background-color: rgba(33, 115, 70, 0.1);
+}
+
+.cell:focus {
+    outline: none;
+    border: 2px solid #217346;
+    background-color: rgba(33, 115, 70, 0.1);
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: white;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+#sheet-name-input {
+    width: 100%;
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#confirm-add-sheet {
+    background-color: #217346;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 10px;
+}
+
+#confirm-add-sheet:hover {
+    background-color: #185a36;
+}

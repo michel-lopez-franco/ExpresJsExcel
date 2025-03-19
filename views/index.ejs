@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Excel</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="toolbar">
+            <div class="logo">Express Excel</div>
+            <div class="formula-bar">
+                <span class="cell-reference" id="active-cell">A1</span>
+                <input type="text" id="formula-input" placeholder="Enter value or formula">
+            </div>
+            <div class="actions">
+                <button id="add-sheet-btn" title="Add Sheet"><i class="fas fa-plus"></i> Add Sheet</button>
+                <button id="save-btn" title="Save"><i class="fas fa-save"></i> Save</button>
+            </div>
+        </div>
+
+        <div class="sheet-tabs">
+            <% spreadsheet.sheets.forEach((sheet, index) => { %>
+                <div class="sheet-tab <%= index === 0 ? 'active' : '' %>" data-sheet-index="<%= index %>">
+                    <%= sheet.name %>
+                </div>
+            <% }); %>
+        </div>
+
+        <div class="spreadsheet-container">
+            <div class="column-headers">
+                <div class="corner-cell"></div>
+                <% for(let i = 0; i < 10; i++) { %>
+                    <div class="column-header"><%= String.fromCharCode(65 + i) %></div>
+                <% } %>
+            </div>
+            
+            <div class="spreadsheet-content">
+                <div class="row-headers">
+                    <% for(let i = 0; i < 20; i++) { %>
+                        <div class="row-header"><%= i + 1 %></div>
+                    <% } %>
+                </div>
+                
+                <div class="grid-container" id="grid-container">
+                    <% for(let row = 0; row < 20; row++) { %>
+                        <div class="row">
+                            <% for(let col = 0; col < 10; col++) { %>
+                                <div class="cell" 
+                                     data-row="<%= row %>" 
+                                     data-col="<%= col %>" 
+                                     data-cell-id="<%= String.fromCharCode(65 + col) %><%= row + 1 %>">
+                                    <%= spreadsheet.sheets[0].data[row][col] %>
+                                </div>
+                            <% } %>
+                        </div>
+                    <% } %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for adding a new sheet -->
+    <div id="sheet-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Sheet</h2>
+            <input type="text" id="sheet-name-input" placeholder="Sheet name">
+            <button id="confirm-add-sheet">Add</button>
+        </div>
+    </div>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
